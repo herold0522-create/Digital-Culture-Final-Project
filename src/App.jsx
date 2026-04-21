@@ -8,11 +8,11 @@ import {
   Calendar, Plus, Image as ImageIcon,
   MoreHorizontal, Play, Search, Zap,
   Palette, Headphones, Gamepad2, BookOpen, Camera, LayoutGrid,
-  Ticket, MapPin, Clock, Users, Train
+  Ticket, MapPin, Clock, Users, Train, Feather, AudioLines, Coffee
 } from 'lucide-react';
 
 // ==========================================
-// 1. 核心数据模型 (包含至诚学院背景故事)
+// 1. 核心数据模型 (包含至诚学院背景故事与专属视觉)
 // ==========================================
 const CIRCLES = [
   {
@@ -23,6 +23,11 @@ const CIRCLES = [
     headline: '文化，在此觉醒。',
     desc: '专注国漫安利、汉服形制研究与同人创作的聚集地。绝无闲杂人等。',
     cover: 'https://images.unsplash.com/photo-1541844053589-346841d0b34c?auto=format&fit=crop&q=80&w=1200',
+    icon: Feather,
+    iconTheme: 'from-[#fb7185] to-[#e11d48]', // 国风樱红渐变
+    founder: '福州大学至诚学院 创办',
+    heroTitle: '传承，演绎，觉醒。\n梦回千古华夏。',
+    lore: '本社团前身为“晓雨动漫社”，由福州大学至诚学院一群热爱二次元与传统文化的学子创立。\n\n从最初的番剧放映室，到如今涵盖汉服形制考究、宅舞翻跳与同人绘图的综合性文化阵地，我们始终坚持为同好提供一个纯净的交流空间。跨越次元与历史，每一次相聚都是一次纯粹的文化觉醒。',
     quiz: [
       { question: '以下哪部属于优秀的国产动画（国漫）？', options: ['A. 《大理寺日志》', 'B. 《火影忍者》', 'C. 《进击的巨人》'], answer: 0 },
       { question: '圈内常说的“吃谷”是指什么行为？', options: ['A. 提倡节约粮食', 'B. 购买动漫周边产品', 'C. 一种汉服穿着方式'], answer: 1 }
@@ -37,10 +42,16 @@ const CIRCLES = [
     tags: ['震感舞', '嘻哈', '编舞'],
     members: 3420,
     headline: '节奏，重塑灵魂。',
-    desc: '舞者的专属阵阵地。用身体丈量热爱，用汗水诠释态度。',
+    desc: '舞者的专属阵地。用身体丈量热爱，用汗水诠释态度。',
     cover: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=1200',
+    icon: AudioLines,
+    iconTheme: 'from-[#38bdf8] to-[#4f46e5]', // 电音紫蓝渐变
+    founder: '福州大学至诚学院 创办',
+    heroTitle: '律动，汗水，狂欢。\n舞台由你定义。',
+    lore: '诞生于福州大学至诚学院的镜子前和路灯下。起初只是一群不服输的年轻人，带着音箱在夜色中挥洒汗水。\n\n多年来，我们见证了无数次 Underground Battle 的热血沸腾，传承着街头文化的自由与无畏。无论你是 Breaking、Locking 还是 Popping 玩家，只要音乐响起，这里就是你灵魂的主场。',
     quiz: [
-      { question: 'Locking（锁舞）的标志性动作之一是什么？', options: ['A. Point (指手)', 'B. Headspin (头转)', 'C. Moonwalk (月球漫步)'], answer: 0 }
+      { question: 'Locking（锁舞）的标志性动作之一是什么？', options: ['A. Point (指手)', 'B. Headspin (头转)', 'C. Moonwalk (月球漫步)'], answer: 0 },
+      { question: 'Breaking（霹雳舞）中，主要在地面上完成的腿部步伐动作统称为什么？', options: ['A. Toprock', 'B. Footwork', 'C. Freeze'], answer: 1 }
     ],
     privatePosts: [
       { id: 'd_pr1', author: 'Locking_Jay', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150', content: '今晚北区食堂门口镜子前，有人来切磋吗？', likes: 67, comments: 15, time: '刚刚' }
@@ -54,13 +65,104 @@ const CIRCLES = [
     headline: '脉络，尽收眼底。',
     desc: '记录城市脉络，分享列车交路、公交迷日常与运转记录。',
     cover: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=1000',
-    quiz: [], 
+    icon: Train,
+    iconTheme: 'from-[#ff9a44] to-[#ff5200]', // 运转亮橙渐变
     founder: '福州大学至诚学院 创办',
-    heroTitle: '探索，记录，运转。',
-    lore: '本群起源于 2008 年福州大学至诚学院机电工程系的一间宿舍。我们用镜头和路书丈量着城市的每一次脉动，与你分享所有纯粹的热爱。',
+    heroTitle: '探索，记录，运转。\n尽在这一域。',
+    lore: '本群起源于 2008 年福州大学至诚学院机电工程系的一间宿舍。\n我们用镜头和路书丈量着城市的每一次脉动，与你分享所有纯粹的热爱。',
+    quiz: [
+      { question: '铁路运转记录中常说的“交路”通常指的是什么？', options: ['A. 铁路线路的交叉点', 'B. 机车或乘务员担当牵引任务的周转区段', 'C. 列车的换乘车站'], answer: 1 },
+      { question: '地铁轨道系统中的“第三轨”主要起什么作用？', options: ['A. 为列车供电', 'B. 增加车厢行驶稳定性', 'C. 紧急制动系统的一部分'], answer: 0 }
+    ], 
     privatePosts: [
       { id: 't_pr1', author: '运转手小林', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150', content: '今天打卡了福州地铁4号线首通段，全自动驾驶的平顺度真的绝了！第一视角的车头风景太震撼了，路书已上传。', likes: 124, comments: 32, time: '3小时前' },
       { id: 't_pr2', author: '至诚_飞羽', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150', content: '周末准备去运转一趟经典的 K1234 次列车，有人要一起拼座吗？', likes: 89, comments: 15, time: '昨天' }
+    ]
+  },
+  {
+    id: 'film-photo',
+    name: '胶片摄影研习社',
+    tags: ['暗房', '135胶卷', '扫街'],
+    members: 2150,
+    headline: '定格，等待，显影。',
+    desc: '从银盐到暗房，在这个数码泛滥的时代，我们依然迷恋纯粹的物理感光。',
+    cover: 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&q=80&w=1200',
+    icon: Camera,
+    iconTheme: 'from-[#14b8a6] to-[#0369a1]', // 青蓝摄影色
+    founder: '视觉传达设计系 认证',
+    heroTitle: '光影，银盐，颗粒。\n留住时间的形状。',
+    lore: '在这个手机快门只需 0.01 秒的时代，我们选择慢下来。从测光、对焦到上卷，每一次按下快门都是一次慎重的决定。\n\n从 135 格式到中画幅，从柯达的暖色到富士的冷艳，我们在快门声中捕捉稍纵即逝的光影，在暗房的显影液中等待惊喜的降临。',
+    quiz: [
+      { question: '通常所说的“E-6工艺”是用来冲洗哪种底片的？', options: ['A. 黑白负片', 'B. 彩色负片 (C-41)', 'C. 彩色反转片 (正片)'], answer: 2 },
+      { question: '在相机镜头参数中，光圈主要控制的是什么？', options: ['A. 进光量与景深', 'B. 视角与焦距', 'C. 胶卷的感光度 (ISO)'], answer: 0 }
+    ], 
+    privatePosts: [
+      { id: 'f_pr1', author: '光影猎手', avatar: 'https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&q=80&w=150', content: '新入手的禄来双反，这中画幅的色彩太毒了，有没有周末去老街扫街的搭子？', likes: 210, comments: 45, time: '2小时前' },
+      { id: 'f_pr2', author: '显影液爱好者', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150', content: '尝试了一下 C-41 自己冲洗彩色底片，温度没控制好稍微偏绿了，大意了大意了...', likes: 76, comments: 12, time: '昨天' }
+    ]
+  },
+  {
+    id: 'poetry',
+    name: '深夜读诗会',
+    tags: ['现代诗', '文学', '灵魂共鸣'],
+    members: 1042,
+    headline: '字句，韵脚，共鸣。',
+    desc: '当城市的喧嚣褪去，这里是文字最后的庇护所。',
+    cover: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&q=80&w=1200',
+    icon: BookOpen,
+    iconTheme: 'from-[#8b5cf6] to-[#4c1d95]', // 神秘文学紫
+    founder: '至诚中文文学社 创办',
+    heroTitle: '浪漫，哲思，解构。\n灵魂深处的对白。',
+    lore: '在这个短视频与碎片化信息充斥的时代，我们偏偏要读那些无用却美丽的句子。\n\n无论你是偏爱泰戈尔的浪漫，还是海子的哲思，亦或是现代先锋诗歌的解构。在这里，每一行诗都是一次灵魂的深呼吸，每一个夜晚都有懂你的回音。',
+    quiz: [
+      { question: '著名诗句“面朝大海，春暖花开”的作者是谁？', options: ['A. 北岛', 'B. 顾城', 'C. 海子'], answer: 2 }
+    ], 
+    privatePosts: [
+      { id: 'p_pr1', author: '吟游诗人', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150', content: '昨夜重读里尔克，雨声淅沥中写下这几句不成气候的短诗，请诸位同好斧正。', likes: 185, comments: 64, time: '4小时前' },
+      { id: 'p_pr2', author: '纸上微光', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150', content: '最近迷上了废话体诗歌，大家怎么看待这种对传统意象的解构主义？', likes: 52, comments: 89, time: '昨天' }
+    ]
+  },
+  {
+    id: 'indie-game',
+    name: '硬核独立游戏舱',
+    tags: ['魂系', '肉鸽', '第九艺术'],
+    members: 4120,
+    headline: '硬核，沉浸，通关。',
+    desc: '拒绝千篇一律的氪金手游，我们只为真正触动人心的“第九艺术”买单。',
+    cover: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=1200',
+    icon: Gamepad2,
+    iconTheme: 'from-[#10b981] to-[#047857]', // 像素矩阵绿
+    founder: '第九艺术研究室 认证',
+    heroTitle: '弹反，构筑，远征。\n重塑游戏荣光。',
+    lore: '我们不追求绚丽的氪金抽卡，只沉迷于精妙的关卡设计与深刻的叙事。\n\n探讨魂系游戏（Souls-like）的极限弹反帧、研究肉鸽游戏（Roguelike）的疯狂 Build 组合。在这里，游戏不仅是消遣，更是一场需要耐心、智慧和肌肉记忆的波澜壮阔的电子远征。',
+    quiz: [
+      { question: '被全球玩家广泛尊称为“老贼”，并开创了“魂系”游戏玩法的著名游戏制作人是谁？', options: ['A. 小岛秀夫', 'B. 宫崎英高', 'C. 席德·梅尔'], answer: 1 },
+      { question: '游戏分类中常说的“Roguelike（肉鸽）”游戏，其最核心的两大特征通常是什么？', options: ['A. 多人联机与开放世界', 'B. 随机生成关卡与永久死亡', 'C. 回合制与文字解谜'], answer: 1 }
+    ], 
+    privatePosts: [
+      { id: 'g_pr1', author: '无名褪色者', avatar: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=150', content: '历时 80 小时，终于无骨灰纯近战单杀女武神！配装思路和弹反节奏已经整理在二楼，欢迎讨论。', likes: 840, comments: 215, time: '1小时前' },
+      { id: 'g_pr2', author: '独立之魂', avatar: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&q=80&w=150', content: '强推一款刚上架的像素风 Roguelike 神作，打击感无敌，流派构筑深度极高，现在打折只要 30！', likes: 320, comments: 66, time: '5小时前' }
+    ]
+  },
+  {
+    id: 'coffee',
+    name: '精品咖啡研习所',
+    tags: ['手冲', '浅烘', '风味轮'],
+    members: 1890,
+    headline: '萃取，风味，醇香。',
+    desc: '从一颗生豆到一杯滴滤，探讨咖啡背后关于温度与时间的科学。',
+    cover: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=1200',
+    icon: Coffee,
+    iconTheme: 'from-[#d97706] to-[#78350f]', // 琥珀深焙褐
+    founder: '手冲爱好者联盟 创办',
+    heroTitle: '注水，焖蒸，品鉴。\n唤醒沉睡的风味。',
+    lore: '放下速溶和流水线奶咖，我们在这里静享滴滤的时光。\n\n从一颗生豆的精细烘焙，到手冲壶里的水温与研磨度的完美配合。我们追求的不仅是一杯提神的饮品，更是花魁的浓郁果香、耶加雪菲的明亮酸质，以及一杯好咖啡带来的片刻宁静。',
+    quiz: [
+      { question: '在制作常规的手冲咖啡（滴滤咖啡）时，普遍推荐的“水粉比”大约在什么范围？', options: ['A. 1:5 ~ 1:8', 'B. 1:15 ~ 1:16', 'C. 1:30 ~ 1:35'], answer: 1 }
+    ], 
+    privatePosts: [
+      { id: 'c_pr1', author: '金杯法则', avatar: 'https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&q=80&w=150', content: '今天刚到的埃塞俄比亚日晒生豆，养豆期还没过，忍不住先手冲了一杯，虽然风味还是有点杂但莓果香气已经很突出了！', likes: 156, comments: 28, time: '半小时前' },
+      { id: 'c_pr2', author: '拉花苦手', avatar: 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&q=80&w=150', content: '郁金香拉花练习第 30 天，终于有一杯能看的成型了！诀窍真的在于融合时的水流高度控制。', likes: 302, comments: 41, time: '昨天' }
     ]
   }
 ];
@@ -72,19 +174,40 @@ const NOTIFICATIONS = [
   { id: 4, type: 'interaction', title: 'Locking_Jay', desc: '在「街舞交流圈」中提到了你', time: '昨天', unread: false },
 ];
 
-const HERO_ACTIVITY = {
-  id: 'hero1',
-  title: '「破界」全能数字艺术特展',
-  circle: '数字视觉前沿',
-  date: '本周五 19:30',
-  desc: '沉浸式视觉与听觉的双重盛宴。',
-  cover: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1600'
-};
+// 将单一的 HERO_ACTIVITY 改为多项 HERO_ACTIVITIES，用于顶部轮播
+const HERO_ACTIVITIES = [
+  {
+    id: 'hero1',
+    title: '「破界」全能数字艺术特展',
+    circle: '数字视觉前沿',
+    date: '本周五 19:30',
+    desc: '沉浸式视觉与听觉的双重盛宴。',
+    cover: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1600'
+  },
+  {
+    id: 'hero2',
+    title: '2026 高校街舞争霸赛',
+    circle: '街舞交流圈',
+    date: '下周六 18:00',
+    desc: '见证最强舞者的巅峰对决，全网同步直播。',
+    cover: 'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=1600'
+  },
+  {
+    id: 'hero3',
+    title: '「时光」复古胶片摄影展',
+    circle: '胶片摄影研习社',
+    date: '本周末 全天',
+    desc: '在银盐颗粒中感受时光的温度，重回 1990。',
+    cover: 'https://images.unsplash.com/photo-1516961642265-531546e84af2?auto=format&fit=crop&q=80&w=1600'
+  }
+];
 
 const ACTIVITIES = [
   { id: 'act1', title: '独立短片展映与导演对谈', date: '周六 14:00', cover: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800', circle: '光影记录' },
   { id: 'act2', title: '极限飞盘高校联赛选拔', date: '周日 09:00', cover: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800', circle: '运动竞技' },
-  { id: 'act3', title: '现代先锋艺术画廊巡展', date: '下周三 15:00', cover: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800', circle: '文艺创作' }
+  { id: 'act3', title: '现代先锋艺术画廊巡展', date: '下周三 15:00', cover: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800', circle: '文艺创作' },
+  { id: 'act4', title: '汉服形制科普讲座', date: '下周五 19:00', cover: 'https://images.unsplash.com/photo-1541844053589-346841d0b34c?auto=format&fit=crop&q=80&w=800', circle: '国风动漫社' },
+  { id: 'act5', title: '福州老城区寻线之旅', date: '下周日 08:30', cover: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=800', circle: '交通迷运转群' }
 ];
 
 const USER_INFO = { name: '测试用户', avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=150', id: 'user_8829' };
@@ -130,6 +253,20 @@ export default function App() {
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizStep, setQuizStep] = useState(0);
   const [toast, setToast] = useState('');
+  
+  // 新增：自动轮播状态
+  const [currentHeroIdx, setCurrentHeroIdx] = useState(0);
+
+  // 新增：轮播定时器逻辑
+  useEffect(() => {
+    let timer;
+    if (isAuth && currentTab === 'discover') {
+      timer = setInterval(() => {
+        setCurrentHeroIdx((prev) => (prev + 1) % HERO_ACTIVITIES.length);
+      }, 5000); // 每 5 秒切换一次
+    }
+    return () => clearInterval(timer);
+  }, [isAuth, currentTab]);
 
   const showToast = (msg) => {
     setToast(msg);
@@ -181,6 +318,20 @@ export default function App() {
   if (!isAuth) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#F8F7FF] via-[#EAE1FF] to-[#FFFFFF] font-sans text-indigo-950 flex flex-col items-center justify-center p-6">
+        <style>
+          {`
+            .animate-in { animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); animation-fill-mode: both; }
+            .fade-in { animation-name: fadeIn; }
+            .slide-in-from-bottom-6 { animation-name: slideInBottom; }
+            .slide-in-from-left-8 { animation-name: slideInLeft; }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes slideInBottom { from { transform: translateY(2rem); } to { transform: translateY(0); } }
+            @keyframes slideInLeft { from { transform: translateX(-2rem); } to { transform: translateX(0); } }
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            .pb-safe { padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+          `}
+        </style>
         <div className="w-full max-w-sm flex flex-col items-center animate-in zoom-in-95 duration-1000">
           <div className="mb-12 text-center">
             <h1 className="text-6xl font-extrabold tracking-tighter mb-4 text-white drop-shadow-lg">同频<span className="text-[#a78bfa]">.</span></h1>
@@ -272,7 +423,7 @@ export default function App() {
       </div>
 
       <section className="space-y-6">
-        <div className="animate-in slide-in-from-left-8 duration-700">
+        <div className="animate-in fade-in slide-in-from-left-8 duration-700">
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-indigo-950 mb-3 drop-shadow-sm">进入同频。</h2>
           <p className="text-xl text-indigo-800/60 font-black">兴趣社交，做成高级审美的日常体验。</p>
         </div>
@@ -303,7 +454,7 @@ export default function App() {
           { label: '讨论帖子', value: '26,890+', icon: MessageCircle },
           { label: '精彩活动', value: '340+', icon: Zap },
         ].map((stat, idx) => (
-          <GlassCard key={idx} className="p-6 md:p-8 relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out" style={{ animationDelay: `${idx * 120}ms` }}>
+          <GlassCard key={idx} className="p-6 md:p-8 relative overflow-hidden group animate-in fade-in slide-in-from-bottom-6 duration-700 ease-out" style={{ animationDelay: `${idx * 120}ms` }}>
             <div className="absolute -right-8 -top-8 w-28 h-28 bg-gradient-to-br from-[#EAE1FF] to-indigo-50 rounded-full opacity-60 group-hover:scale-125 transition-transform duration-1000 ease-out"></div>
             <div className="relative z-10 flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-2xl bg-white shadow-sm text-[#a78bfa] flex items-center justify-center shrink-0">
@@ -348,29 +499,53 @@ export default function App() {
          </div>
       </div>
 
-      <div className="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-[2rem] overflow-hidden mb-10 group shadow-xl border border-white/50">
-         <img src={HERO_ACTIVITY.cover} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-         <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="text-white max-w-lg">
-               <div className="flex items-center gap-2 mb-3">
-                 <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-black tracking-widest uppercase border border-white/30">Top Event</span>
-                 <span className="text-xs font-bold text-white/90">{HERO_ACTIVITY.circle}</span>
+      {/* Apple 级动态轮播巨幕 */}
+      <div className="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-[2rem] overflow-hidden mb-10 shadow-xl border border-white/50 group">
+         
+         {/* 滚动的 Track */}
+         <div 
+           className="flex w-full h-full transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+           style={{ transform: `translateX(-${currentHeroIdx * 100}%)` }}
+         >
+           {HERO_ACTIVITIES.map((hero) => (
+             <div key={hero.id} className="relative w-full h-full shrink-0">
+               <img src={hero.cover} className="w-full h-full object-cover" alt={hero.title} />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+               <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                  <div className="text-white max-w-lg">
+                     <div className="flex items-center gap-2 mb-3">
+                       <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-black tracking-widest uppercase border border-white/30">Top Event</span>
+                       <span className="text-xs font-bold text-white/90">{hero.circle}</span>
+                     </div>
+                     <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">{hero.title}</h2>
+                     <p className="text-sm md:text-base text-white/80 font-medium">{hero.desc}</p>
+                  </div>
+                  <button
+                     onClick={(e) => handleRegisterEvent(hero.id, e)}
+                     className="bg-white text-indigo-950 px-6 py-2.5 rounded-full font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-lg"
+                  >
+                     {registeredEvents.includes(hero.id) ? '已报名' : '立即报名'}
+                  </button>
                </div>
-               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">{HERO_ACTIVITY.title}</h2>
-               <p className="text-sm md:text-base text-white/80 font-medium">{HERO_ACTIVITY.desc}</p>
-            </div>
-            <button
-               onClick={(e) => handleRegisterEvent(HERO_ACTIVITY.id, e)}
-               className="bg-white text-indigo-950 px-6 py-2.5 rounded-full font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-lg"
-            >
-               {registeredEvents.includes(HERO_ACTIVITY.id) ? '已报名' : '立即报名'}
-            </button>
+             </div>
+           ))}
+         </div>
+         
+         {/* 底部动态胶囊指示器 */}
+         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+           {HERO_ACTIVITIES.map((_, idx) => (
+             <button 
+               key={idx}
+               onClick={() => setCurrentHeroIdx(idx)}
+               className={`h-1.5 rounded-full transition-all duration-500 ${currentHeroIdx === idx ? 'w-6 bg-white' : 'w-1.5 bg-white/40 hover:bg-white/70'}`}
+             />
+           ))}
          </div>
       </div>
 
-      <div className="mb-14 animate-in slide-in-from-bottom-8">
-        <div className="flex gap-4 md:gap-5 overflow-x-auto hide-scrollbar pb-6 -mx-4 px-4 md:-mx-0 md:px-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="mb-14 animate-in fade-in slide-in-from-bottom-8">
+        {/* 新增 scroll-smooth 使手动滑动更流畅 */}
+        <div className="flex gap-4 md:gap-5 overflow-x-auto hide-scrollbar pb-6 -mx-4 px-4 md:-mx-0 md:px-0 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
            {ACTIVITIES.map((activity, idx) => {
              const isRegistered = registeredEvents.includes(activity.id);
              return (
@@ -449,13 +624,13 @@ export default function App() {
           `}
         </style>
         <div className="flex flex-col items-center justify-center">
-          <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#a78bfa] uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">Find Your Spiritual Sanctuary</span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-indigo-950 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100">遇见，你的</h2>
+          <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#a78bfa] uppercase mb-4 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-300">Find Your Spiritual Sanctuary</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-indigo-950 relative z-10 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-100">遇见，你的</h2>
           <div className="mt-[-0.5rem] md:mt-[-1.5rem] relative z-20">
             <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black text-white tracking-tighter drop-shadow-xl animate-huge-shrink leading-none">精神领地<span className="text-indigo-200">.</span></h1>
           </div>
         </div>
-        <p className="text-sm md:text-base font-bold text-indigo-800/70 leading-relaxed max-w-xl mx-auto mt-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">备受赞誉的国风创作，血脉喷张的街舞现场。全校最硬核的交通迷运转记录。这里只有最纯粹的文化和沉浸体验 —— 仅限同频者入内。</p>
+        <p className="text-sm md:text-base font-bold text-indigo-800/70 leading-relaxed max-w-xl mx-auto mt-10 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-500">备受赞誉的国风创作，血脉喷张的街舞现场。全校最硬核的交通迷运转记录。这里只有最纯粹的文化和沉浸体验 —— 仅限同频者入内。</p>
       </div>
 
       <div className="px-6 space-y-8">
@@ -552,6 +727,8 @@ export default function App() {
 
   const renderCircleDetail = () => {
     const isJoined = joinedCircles.includes(activeCircle.id);
+    const ActiveIcon = activeCircle.icon || Sparkles;
+    
     return (
       <div className="fixed inset-0 bg-gradient-to-br from-[#F4F5F8] via-[#FFFFFF] to-[#F8F7FF] text-indigo-950 z-[100] animate-in slide-in-from-right-full duration-500 flex flex-col md:left-64">
         <div className="absolute top-8 left-6 right-6 flex justify-between z-[60] max-w-5xl mx-auto">
@@ -572,33 +749,55 @@ export default function App() {
                 <style>
                   {`
                     @keyframes iconPopExaggerated {
-                      0% { transform: scale(0) translateY(30px); opacity: 0; }
-                      50% { transform: scale(1.35) translateY(-10px); opacity: 1; }
-                      75% { transform: scale(0.9) translateY(5px); opacity: 1; }
+                      0% { transform: scale(0.4) translateY(20px); opacity: 0; }
+                      50% { transform: scale(1.2) translateY(-5px); opacity: 1; }
+                      75% { transform: scale(0.95) translateY(2px); opacity: 1; }
                       100% { transform: scale(1) translateY(0); opacity: 1; }
                     }
-                    .animate-icon-pop { animation: iconPopExaggerated 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+                    @keyframes smoothFadeUp {
+                      0% { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+                      100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+                    }
+                    .animate-icon-pop { 
+                      animation: iconPopExaggerated 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; 
+                    }
+                    .animate-smooth-up { 
+                      animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+                      opacity: 0; 
+                    }
                   `}
                 </style>
                 <div className="flex flex-col items-center justify-center text-center mt-6 md:mt-10 mb-16">
-                  <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-b from-[#ff9a44] to-[#ff5200] rounded-[1.8rem] shadow-xl flex items-center justify-center text-white mb-5 animate-icon-pop">
-                    <Train size={40} strokeWidth={2.5} />
+                  
+                  {/* 动态 Icon 与 主题渐变 */}
+                  <div className={`w-20 h-20 md:w-24 md:h-24 bg-gradient-to-b ${activeCircle.iconTheme || 'from-[#b7a8ff] to-[#c084fc]'} rounded-[1.8rem] shadow-xl flex items-center justify-center text-white mb-5 animate-icon-pop`}>
+                    <ActiveIcon size={40} strokeWidth={2.5} />
                   </div>
-                  <span className="text-[13px] font-black text-indigo-950/70 mb-8 tracking-wide animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
+                  
+                  {/* Apple Books Style: 顶部学院来源 */}
+                  <span className="text-[13px] font-black text-indigo-950/70 mb-6 tracking-wide animate-smooth-up" style={{ animationDelay: '150ms' }}>
                     {activeCircle.founder || '官方认证圈层'}
                   </span>
-                  <h1 className="text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] font-black tracking-tight text-indigo-950 leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-700" style={{ animationDelay: '400ms' }}>
-                    {activeCircle.heroTitle || activeCircle.name}
+                  
+                  {/* Apple Books Style: 强制断行的自适应巨型标题 */}
+                  <h1 className="text-[2.5rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-black tracking-tight text-indigo-950 leading-[1.1] mb-8 drop-shadow-sm animate-smooth-up" style={{ animationDelay: '300ms' }}>
+                    {(activeCircle.heroTitle || activeCircle.name).split('\n').map((line, index) => (
+                      <span key={index} className="block">{line}</span>
+                    ))}
                   </h1>
-                  <p className="text-[15px] md:text-[17px] font-bold text-indigo-900/70 max-w-3xl mx-auto leading-relaxed px-2 md:px-6 whitespace-pre-line animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: '600ms' }}>
+                  
+                  {/* Apple Books Style: 居中简介 */}
+                  <p className="text-[15px] md:text-[17px] font-bold text-indigo-900/70 max-w-2xl mx-auto leading-relaxed px-2 md:px-6 whitespace-pre-line animate-smooth-up" style={{ animationDelay: '450ms' }}>
                     {activeCircle.lore || activeCircle.desc}
                   </p>
                 </div>
-                <div className="w-12 h-1.5 bg-indigo-100 mx-auto rounded-full mb-12 animate-in fade-in" style={{ animationDelay: '800ms' }}></div>
-                <div className="space-y-6 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{ animationDelay: '1000ms' }}>
+                
+                <div className="w-12 h-1.5 bg-indigo-100 mx-auto rounded-full mb-12 animate-smooth-up" style={{ animationDelay: '600ms' }}></div>
+                
+                <div className="space-y-6 max-w-3xl mx-auto animate-smooth-up" style={{ animationDelay: '750ms' }}>
                   <div className="flex items-center justify-between mb-8">
                     <h3 className="text-xl font-black text-indigo-950">最新运转记录</h3>
-                    <button className="text-sm font-black text-[#a78bfa] bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-100">发布路书</button>
+                    <button className="text-sm font-black text-[#a78bfa] bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-100 transition-colors">发布路书</button>
                   </div>
                   {activeCircle.privatePosts?.map((post) => (
                     <GlassCard key={post.id} className="p-6 md:p-8 bg-white border border-indigo-50/50 shadow-sm hover:shadow-xl transition-all">
