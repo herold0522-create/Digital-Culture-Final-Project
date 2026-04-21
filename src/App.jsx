@@ -7,11 +7,12 @@ import {
   Settings, Bell, LogOut, CheckCircle2, X,
   Calendar, Plus, Image as ImageIcon,
   MoreHorizontal, Play, Search, Zap,
-  Palette, Headphones, Gamepad2, BookOpen, Camera, LayoutGrid
+  Palette, Headphones, Gamepad2, BookOpen, Camera, LayoutGrid,
+  Ticket, MapPin, Clock, Users, Train
 } from 'lucide-react';
 
 // ==========================================
-// 1. 核心数据模型 (公私域隔离)
+// 1. 核心数据模型 (包含至诚学院背景故事)
 // ==========================================
 const CIRCLES = [
   {
@@ -22,20 +23,12 @@ const CIRCLES = [
     headline: '文化，在此觉醒。',
     desc: '专注国漫安利、汉服形制研究与同人创作的聚集地。绝无闲杂人等。',
     cover: 'https://images.unsplash.com/photo-1541844053589-346841d0b34c?auto=format&fit=crop&q=80&w=1200',
-    jargons: [
-      { word: '谷子', meaning: '动漫周边产品的谐音。' },
-      { word: '形制', meaning: '汉服的款式结构，如明制马面裙。' }
-    ],
     quiz: [
       { question: '以下哪部属于优秀的国产动画（国漫）？', options: ['A. 《大理寺日志》', 'B. 《火影忍者》', 'C. 《进击的巨人》'], answer: 0 },
       { question: '圈内常说的“吃谷”是指什么行为？', options: ['A. 提倡节约粮食', 'B. 购买动漫周边产品', 'C. 一种汉服穿着方式'], answer: 1 }
     ],
-    publicPosts: [
-      { id: 'p1', type: 'official', author: '社团官方', title: '【公告】校内漫展参展预告', content: '我们将于下周在体育馆布置专属国风展区，欢迎所有人前来打卡。', likes: 1204, image: 'https://images.unsplash.com/photo-1618365908648-e71bd8fac10f?auto=format&fit=crop&q=80&w=600' },
-    ],
     privatePosts: [
-      { id: 'pr1', author: '云中君', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', content: '家人们，周末漫展谁要一起出C？我这套明制还在犹豫配什么头饰，求推荐！', likes: 45, comments: 23, time: '10分钟前' },
-      { id: 'pr2', author: '画师小透明', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150', content: '吐槽一下今天新买的颜料，显色度太差了避雷避雷！顺便求大触们指点一下上色技巧。', likes: 12, comments: 8, time: '2小时前' }
+      { id: 'pr1', author: '云中君', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150', content: '家人们，周末漫展谁要一起出C？我这套明制还在犹豫配什么头饰，求推荐！', likes: 45, comments: 23, time: '10分钟前' }
     ]
   },
   {
@@ -44,10 +37,10 @@ const CIRCLES = [
     tags: ['震感舞', '嘻哈', '编舞'],
     members: 3420,
     headline: '节奏，重塑灵魂。',
-    desc: '舞者的专属阵地。用身体丈量热爱，用汗水诠释态度。',
-    cover: 'https://images.unsplash.com/photo-1535597408906-620a52538006?auto=format&fit=crop&q=80&w=1000',
-    publicPosts: [
-      { id: 'd_p1', type: 'official', author: '校街舞队', title: '齐舞大赛冠军视频发布', content: '感受力量与律动。', likes: 5400 }
+    desc: '舞者的专属阵阵地。用身体丈量热爱，用汗水诠释态度。',
+    cover: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=1200',
+    quiz: [
+      { question: 'Locking（锁舞）的标志性动作之一是什么？', options: ['A. Point (指手)', 'B. Headspin (头转)', 'C. Moonwalk (月球漫步)'], answer: 0 }
     ],
     privatePosts: [
       { id: 'd_pr1', author: 'Locking_Jay', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150', content: '今晚北区食堂门口镜子前，有人来切磋吗？', likes: 67, comments: 15, time: '刚刚' }
@@ -61,23 +54,40 @@ const CIRCLES = [
     headline: '脉络，尽收眼底。',
     desc: '记录城市脉络，分享列车交路、公交迷日常与运转记录。',
     cover: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=1000',
-    publicPosts: [],
-    privatePosts: []
+    quiz: [], 
+    founder: '福州大学至诚学院 创办',
+    heroTitle: '探索，记录，运转。',
+    lore: '本群起源于 2008 年福州大学至诚学院机电工程系的一间宿舍。我们用镜头和路书丈量着城市的每一次脉动，与你分享所有纯粹的热爱。',
+    privatePosts: [
+      { id: 't_pr1', author: '运转手小林', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150', content: '今天打卡了福州地铁4号线首通段，全自动驾驶的平顺度真的绝了！第一视角的车头风景太震撼了，路书已上传。', likes: 124, comments: 32, time: '3小时前' },
+      { id: 't_pr2', author: '至诚_飞羽', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150', content: '周末准备去运转一趟经典的 K1234 次列车，有人要一起拼座吗？', likes: 89, comments: 15, time: '昨天' }
+    ]
   }
 ];
 
 const NOTIFICATIONS = [
   { id: 1, type: 'system', title: '系统更新', desc: '全新温柔认证系统已上线，你的安全由我们来守护。', time: '刚刚', unread: true },
-  { id: 2, type: 'system', title: '圈层开放通知', desc: '「交通迷运转群」现已接受验证申请，快去探索吧。', time: '1小时前', unread: true },
+  { id: 2, type: 'system', title: '圈层开放通知', desc: '「交通迷运转群」现已通过福州大学至诚学院认证。', time: '1小时前', unread: true },
   { id: 3, type: 'interaction', title: '云中君', desc: '赞同了你的帖子：“这套汉服形制非常考究”', time: '2小时前', unread: false },
   { id: 4, type: 'interaction', title: 'Locking_Jay', desc: '在「街舞交流圈」中提到了你', time: '昨天', unread: false },
 ];
 
-const USER_INFO = {
-  name: '测试用户',
-  avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=150',
-  id: 'user_8829',
-}
+const HERO_ACTIVITY = {
+  id: 'hero1',
+  title: '「破界」全能数字艺术特展',
+  circle: '数字视觉前沿',
+  date: '本周五 19:30',
+  desc: '沉浸式视觉与听觉的双重盛宴。',
+  cover: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1600'
+};
+
+const ACTIVITIES = [
+  { id: 'act1', title: '独立短片展映与导演对谈', date: '周六 14:00', cover: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800', circle: '光影记录' },
+  { id: 'act2', title: '极限飞盘高校联赛选拔', date: '周日 09:00', cover: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800', circle: '运动竞技' },
+  { id: 'act3', title: '现代先锋艺术画廊巡展', date: '下周三 15:00', cover: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800', circle: '文艺创作' }
+];
+
+const USER_INFO = { name: '测试用户', avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=150', id: 'user_8829' };
 
 const CATEGORIES = [
   { icon: Palette, label: '文艺创作' },
@@ -113,14 +123,12 @@ const GlassCard = ({ children, className = '', onClick, style }) => (
 export default function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
-  
   const [currentTab, setCurrentTab] = useState('home'); 
   const [activeCircle, setActiveCircle] = useState(null);
   const [joinedCircles, setJoinedCircles] = useState(['dance']); 
-  
+  const [registeredEvents, setRegisteredEvents] = useState([]);
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizStep, setQuizStep] = useState(0);
-  const [showPostModal, setShowPostModal] = useState(false);
   const [toast, setToast] = useState('');
 
   const showToast = (msg) => {
@@ -135,9 +143,31 @@ export default function App() {
   };
 
   const handleJoinCircle = (circleId) => {
-    setJoinedCircles([...joinedCircles, circleId]);
+    if (!joinedCircles.includes(circleId)) {
+      setJoinedCircles([...joinedCircles, circleId]);
+    }
     setShowQuiz(false);
-    showToast('✨ 验证通过，已解锁私有空间');
+    showToast('✨ 已为您解锁该圈层私有空间');
+  };
+
+  const handleOpenQuiz = (circle) => {
+    if (!circle) return;
+    if (circle.quiz && circle.quiz.length > 0) {
+      setQuizStep(0);
+      setShowQuiz(true);
+    } else {
+      handleJoinCircle(circle.id);
+    }
+  };
+
+  const handleRegisterEvent = (eventId, e) => {
+    e.stopPropagation();
+    if (registeredEvents.includes(eventId)) {
+       showToast('你已经报名过该活动啦');
+       return;
+    }
+    setRegisteredEvents([...registeredEvents, eventId]);
+    showToast('🎉 报名成功！记得准时参加哦');
   };
 
   const NAV_ITEMS = [
@@ -148,19 +178,16 @@ export default function App() {
     { id: 'profile', icon: User, label: '我' },
   ];
 
-  // ------------------------------------------
-  // 登录界面 (未授权状态)
-  // ------------------------------------------
   if (!isAuth) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#E2D4FF] via-[#EAE1FF] to-[#F3E8FF] font-sans text-indigo-950 flex flex-col items-center justify-center p-6">
+      <div className="min-h-screen bg-gradient-to-br from-[#F8F7FF] via-[#EAE1FF] to-[#FFFFFF] font-sans text-indigo-950 flex flex-col items-center justify-center p-6">
         <div className="w-full max-w-sm flex flex-col items-center animate-in zoom-in-95 duration-1000">
           <div className="mb-12 text-center">
             <h1 className="text-6xl font-extrabold tracking-tighter mb-4 text-white drop-shadow-lg">同频<span className="text-[#a78bfa]">.</span></h1>
             <p className="text-indigo-800/60 font-bold tracking-wide">找到属于你的精神角落</p>
           </div>
           <form onSubmit={handleLogin} className="w-full space-y-4">
-            <button className="w-full bg-gradient-to-r from-[#b7a8ff] to-[#c084fc] text-white font-bold text-lg rounded-full py-5 shadow-[0_12px_24px_rgba(167,139,250,0.4)] hover:scale-[1.02] active:scale-95 transition-all">
+            <button className="w-full bg-gradient-to-r from-[#b7a8ff] to-[#c084fc] text-white font-bold text-lg rounded-full py-5 shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
               {authLoading ? '正在开启空间...' : '进入空间'}
             </button>
           </form>
@@ -169,9 +196,6 @@ export default function App() {
     );
   }
 
-  // ------------------------------------------
-  // 响应式全局架构
-  // ------------------------------------------
   const renderSidebar = () => (
     <aside className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-white/50 backdrop-blur-3xl border-r border-white/60 p-8 z-40">
       <div className="mb-12">
@@ -179,7 +203,7 @@ export default function App() {
           <Sparkles className="text-[#a78bfa]" size={24} />
           数字文化
         </h1>
-        <p className="text-[10px] text-indigo-800/50 mt-1 font-black tracking-[0.2em] uppercase text-center md:text-left">This Circle</p>
+        <p className="text-[10px] text-indigo-800/50 mt-1 font-black tracking-[0.2em] uppercase">This Circle</p>
       </div>
       <nav className="flex-1 space-y-3">
         {NAV_ITEMS.map((item) => {
@@ -214,15 +238,12 @@ export default function App() {
         <Sparkles className="text-[#a78bfa]" size={24} />
         <h1 className="text-xl font-black text-indigo-950 tracking-tight">数字文化</h1>
       </div>
-      <div className="flex items-center gap-4">
-        <Search className="text-indigo-800/60" size={20} />
-        <img src={USER_INFO.avatar} alt="Avatar" className="w-8 h-8 rounded-full object-cover shadow-sm border border-white" />
-      </div>
+      <img src={USER_INFO.avatar} alt="Avatar" className="w-8 h-8 rounded-full object-cover shadow-sm border border-white" />
     </header>
   );
 
   const renderBottomNav = () => (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/70 backdrop-blur-3xl border-t border-white/60 pb-safe z-40 shadow-[0_-12px_40px_rgba(0,0,0,0.06)]">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/70 backdrop-blur-3xl border-t border-white/60 pb-safe z-40 shadow-lg">
       <div className="flex justify-around items-center h-16 px-4">
         {NAV_ITEMS.map((item) => {
           const isActive = currentTab === item.id;
@@ -237,13 +258,8 @@ export default function App() {
     </nav>
   );
 
-  // ------------------------------------------
-  // 各板块渲染函数 (Tab Views)
-  // ------------------------------------------
-
-  // Tab 1: 首页 (Home) - 响应式 Banner 与看板
   const renderHome = () => (
-    <div className="max-w-6xl mx-auto px-4 md:px-10 pt-6 pb-24 md:pb-12 space-y-12 animate-in fade-in [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+    <div className="max-w-6xl mx-auto px-4 md:px-10 pt-6 pb-24 md:pb-12 space-y-12 animate-in fade-in hide-scrollbar">
       <div className="hidden md:flex justify-between items-center pt-2">
         <div className="relative w-96">
           <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-indigo-800/40" size={20} />
@@ -272,7 +288,7 @@ export default function App() {
                 <h3 className="text-3xl font-black text-indigo-950">国风动漫社</h3>
                 <p className="text-sm text-indigo-800/60 font-bold max-w-lg">专注国漫安利、汉服形制研究与同人创作。纯粹，拒绝喧哗。</p>
               </div>
-              <button onClick={() => { setActiveCircle(CIRCLES[0]); setShowQuiz(true); }} className="self-start md:self-center bg-gradient-to-r from-[#b7a8ff] to-[#c084fc] text-white px-8 py-4 rounded-full text-sm font-black flex items-center gap-3 hover:shadow-[0_8px_30px_rgba(167,139,250,0.4)] hover:scale-105 active:scale-95 transition-all shadow-lg">
+              <button onClick={() => { setActiveCircle(CIRCLES[0]); handleOpenQuiz(CIRCLES[0]); }} className="self-start md:self-center bg-gradient-to-r from-[#b7a8ff] to-[#c084fc] text-white px-8 py-4 rounded-full text-sm font-black flex items-center gap-3 hover:shadow-xl hover:scale-105 active:scale-95 transition-all shadow-lg">
                 立即申请 <ArrowRight size={18} strokeWidth={3} />
               </button>
             </div>
@@ -287,7 +303,7 @@ export default function App() {
           { label: '讨论帖子', value: '26,890+', icon: MessageCircle },
           { label: '精彩活动', value: '340+', icon: Zap },
         ].map((stat, idx) => (
-          <GlassCard key={idx} className="p-6 md:p-8 relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out" style={{ animationFillMode: 'both', animationDelay: `${idx * 120}ms` }}>
+          <GlassCard key={idx} className="p-6 md:p-8 relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out" style={{ animationDelay: `${idx * 120}ms` }}>
             <div className="absolute -right-8 -top-8 w-28 h-28 bg-gradient-to-br from-[#EAE1FF] to-indigo-50 rounded-full opacity-60 group-hover:scale-125 transition-transform duration-1000 ease-out"></div>
             <div className="relative z-10 flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-2xl bg-white shadow-sm text-[#a78bfa] flex items-center justify-center shrink-0">
@@ -302,7 +318,7 @@ export default function App() {
         ))}
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-8 pb-12">
         <h2 className="text-3xl font-black tracking-tight text-indigo-950">探索多元矩阵。</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {[
@@ -323,24 +339,68 @@ export default function App() {
     </div>
   );
 
-  // Tab 2: 发现页 (Discover) - 治愈系卡片流
   const renderDiscover = () => (
-    <div className="pt-6 md:pt-10 px-6 max-w-4xl mx-auto animate-in fade-in pb-24 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+    <div className="pt-6 md:pt-10 px-4 md:px-6 max-w-6xl mx-auto animate-in fade-in pb-24 hide-scrollbar">
       <div className="flex justify-between items-center mb-8">
-         <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-indigo-950">发现同频</h1>
-         <div className="w-12 h-12 rounded-full bg-white/80 p-1 shadow-sm border border-white">
+         <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-indigo-950">发现</h1>
+         <div className="w-10 h-10 rounded-full bg-white/80 p-0.5 shadow-sm border border-white">
             <img src={USER_INFO.avatar} className="w-full h-full rounded-full object-cover" alt="User"/>
          </div>
       </div>
-      <div className="flex gap-3 mb-10 overflow-x-auto hide-scrollbar">
-         <span className="bg-white/80 backdrop-blur-md px-6 py-3 rounded-full text-sm font-black shadow-sm flex items-center gap-2 text-indigo-950 shrink-0">
-           <Calendar size={18} className="text-[#a78bfa]"/> 探索最新
-         </span>
-         <span onClick={() => setCurrentTab('circles')} className="bg-white/40 px-6 py-3 rounded-full text-sm font-black text-indigo-800/60 flex items-center gap-2 cursor-pointer hover:bg-white/60 transition-all shrink-0">
-           <ShieldCheck size={18}/> 已加入 ({joinedCircles.length})
-         </span>
+
+      <div className="relative w-full aspect-[4/3] md:aspect-[21/9] rounded-[2rem] overflow-hidden mb-10 group shadow-xl border border-white/50">
+         <img src={HERO_ACTIVITY.cover} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+         <div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="text-white max-w-lg">
+               <div className="flex items-center gap-2 mb-3">
+                 <span className="bg-white/20 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-black tracking-widest uppercase border border-white/30">Top Event</span>
+                 <span className="text-xs font-bold text-white/90">{HERO_ACTIVITY.circle}</span>
+               </div>
+               <h2 className="text-3xl md:text-5xl font-black mb-3 leading-tight">{HERO_ACTIVITY.title}</h2>
+               <p className="text-sm md:text-base text-white/80 font-medium">{HERO_ACTIVITY.desc}</p>
+            </div>
+            <button
+               onClick={(e) => handleRegisterEvent(HERO_ACTIVITY.id, e)}
+               className="bg-white text-indigo-950 px-6 py-2.5 rounded-full font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-lg"
+            >
+               {registeredEvents.includes(HERO_ACTIVITY.id) ? '已报名' : '立即报名'}
+            </button>
+         </div>
       </div>
-      <div className="space-y-6">
+
+      <div className="mb-14 animate-in slide-in-from-bottom-8">
+        <div className="flex gap-4 md:gap-5 overflow-x-auto hide-scrollbar pb-6 -mx-4 px-4 md:-mx-0 md:px-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+           {ACTIVITIES.map((activity, idx) => {
+             const isRegistered = registeredEvents.includes(activity.id);
+             return (
+               <div key={activity.id} className="min-w-[260px] md:min-w-[320px] w-[260px] md:w-[320px] shrink-0 flex flex-col group cursor-pointer snap-start" style={{ animationDelay: `${idx * 100}ms` }}>
+                 <div className="w-full aspect-video rounded-2xl overflow-hidden mb-3 shadow-md border border-black/5 relative bg-indigo-50">
+                   <img src={activity.cover} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={activity.title} />
+                 </div>
+                 <div className="px-1 flex items-start justify-between gap-3">
+                   <div className="flex-1 min-w-0 flex flex-col pt-1">
+                     <h3 className="font-black text-indigo-950 text-base leading-tight truncate">{activity.title}</h3>
+                     <p className="text-xs text-indigo-800/60 font-semibold mt-1 truncate">{activity.circle} · {activity.date}</p>
+                   </div>
+                   <button
+                      onClick={(e) => handleRegisterEvent(activity.id, e)}
+                      disabled={isRegistered}
+                      className={`shrink-0 px-4 py-1.5 mt-0.5 rounded-full text-[11px] font-black transition-all ${isRegistered ? 'bg-indigo-50 text-indigo-300' : 'bg-indigo-100 text-[#a78bfa] hover:bg-[#a78bfa] hover:text-white'}`}
+                   >
+                     {isRegistered ? '已报' : '报名'}
+                   </button>
+                 </div>
+               </div>
+             )
+           })}
+        </div>
+      </div>
+
+      <div className="space-y-5">
+        <h2 className="text-2xl font-black text-indigo-950 mb-4 flex items-center gap-2">
+           <Compass className="text-[#a78bfa]" size={20}/> 探索圈层
+        </h2>
         {CIRCLES.map((circle, idx) => (
           <FadeInView key={circle.id} delay={`delay-${idx * 100}`}>
             <GlassCard onClick={() => setActiveCircle(circle)} className="p-5 flex items-center gap-6 group hover:shadow-2xl">
@@ -348,7 +408,7 @@ export default function App() {
                   <h3 className="font-black text-2xl text-indigo-950 group-hover:text-[#a78bfa] transition-colors">{circle.name}</h3>
                   <p className="text-sm text-indigo-800/60 font-bold line-clamp-2 leading-relaxed">{circle.desc}</p>
                </div>
-               <div className="w-28 h-28 rounded-[2rem] overflow-hidden relative shadow-inner shrink-0 border border-white/50">
+               <div className="w-24 h-24 md:w-28 md:h-28 rounded-[2rem] overflow-hidden relative shadow-inner shrink-0 border border-white/50">
                   <img src={circle.cover} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="" />
                   <div className="absolute inset-0 bg-indigo-950/10"></div>
                   <div className="absolute bottom-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-[#a78bfa] shadow-sm">
@@ -362,10 +422,9 @@ export default function App() {
     </div>
   );
 
-  // Tab 3: 圈层页 (Circles) - Apple 风格 Icon 导航
   const renderCircles = () => (
-    <div className="pt-6 md:pt-10 max-w-5xl mx-auto animate-in fade-in pb-24 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-      <div className="flex items-start overflow-x-auto gap-8 px-6 py-8 mb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+    <div className="pt-6 md:pt-10 max-w-5xl mx-auto animate-in fade-in pb-24 hide-scrollbar">
+      <div className="flex items-start justify-start md:justify-center overflow-x-auto gap-6 md:gap-10 lg:gap-16 px-6 py-8 mb-4 hide-scrollbar">
         {CATEGORIES.map((cat, idx) => (
           <div key={idx} className="flex flex-col items-center gap-4 cursor-pointer group min-w-[4rem] animate-in zoom-in duration-700" style={{ animationDelay: `${idx * 50}ms` }}>
             <div className="w-16 h-16 rounded-[1.5rem] bg-white/70 backdrop-blur-md shadow-sm border border-white flex items-center justify-center text-indigo-900 group-hover:text-white group-hover:bg-gradient-to-br group-hover:from-[#b7a8ff] group-hover:to-[#c084fc] group-hover:scale-110 transition-all duration-500 group-hover:rotate-6">
@@ -375,20 +434,32 @@ export default function App() {
           </div>
         ))}
       </div>
-      <div className="px-6 text-center mt-6 mb-20 animate-in slide-in-from-top-12 duration-1000">
-        <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-indigo-950 mb-8 leading-[1.1] drop-shadow-sm">
-          遇见，你的<br/><span className="text-white drop-shadow-md">精神领地。</span>
-        </h1>
-        <p className="text-base font-bold text-indigo-800/70 leading-relaxed max-w-xl mx-auto">
-          备受赞誉的国风创作，血脉喷张的街舞现场。全校最硬核的交通迷运转记录。
-          这里只有最纯粹的文化和沉浸体验 —— 仅限同频者入内。
-        </p>
-      </div>
-      <div className="px-6 space-y-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-black text-indigo-950 tracking-tight">正在开放的圈层</h2>
-          <button className="text-sm font-black text-[#a78bfa] hover:underline flex items-center gap-1">查看全部 <ChevronRight size={14}/></button>
+      
+      <div className="px-6 text-center mt-8 mb-24 relative">
+        <style>
+          {`
+            @keyframes hugeShrink {
+              0% { transform: scale(3.5); opacity: 0; filter: blur(12px); }
+              40% { opacity: 1; filter: blur(0px); }
+              100% { transform: scale(1); opacity: 1; filter: blur(0px); }
+            }
+            .animate-huge-shrink {
+              animation: hugeShrink 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+          `}
+        </style>
+        <div className="flex flex-col items-center justify-center">
+          <span className="text-[10px] md:text-xs font-black tracking-[0.4em] text-[#a78bfa] uppercase mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">Find Your Spiritual Sanctuary</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-indigo-950 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100">遇见，你的</h2>
+          <div className="mt-[-0.5rem] md:mt-[-1.5rem] relative z-20">
+            <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black text-white tracking-tighter drop-shadow-xl animate-huge-shrink leading-none">精神领地<span className="text-indigo-200">.</span></h1>
+          </div>
         </div>
+        <p className="text-sm md:text-base font-bold text-indigo-800/70 leading-relaxed max-w-xl mx-auto mt-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">备受赞誉的国风创作，血脉喷张的街舞现场。全校最硬核的交通迷运转记录。这里只有最纯粹的文化和沉浸体验 —— 仅限同频者入内。</p>
+      </div>
+
+      <div className="px-6 space-y-8">
+        <h2 className="text-2xl font-black text-indigo-950">正在开放的圈层</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-12">
           {CIRCLES.map(circle => {
             const isJoined = joinedCircles.includes(circle.id);
@@ -398,9 +469,7 @@ export default function App() {
                   <img src={circle.cover} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt=""/>
                   {isJoined && (
                     <div className="absolute inset-0 bg-[#a78bfa]/20 flex items-center justify-center backdrop-blur-[2px]">
-                      <div className="bg-white/90 p-2 rounded-full text-[#a78bfa] shadow-lg scale-110">
-                        <Unlock size={16} strokeWidth={4} />
-                      </div>
+                      <div className="bg-white/90 p-2 rounded-full text-[#a78bfa] shadow-lg scale-110"><Unlock size={16} strokeWidth={4} /></div>
                     </div>
                   )}
                 </div>
@@ -421,127 +490,9 @@ export default function App() {
     </div>
   );
 
-  // ------------------------------------------
-  // 通用功能渲染
-  // ------------------------------------------
-  const renderCircleDetail = () => {
-    const isJoined = joinedCircles.includes(activeCircle.id);
-    return (
-      <div className="fixed inset-0 bg-gradient-to-br from-[#EAE1FF] via-[#F5F3FF] to-[#FFFFFF] text-indigo-950 z-[100] animate-in slide-in-from-right-full duration-500 flex flex-col md:left-64">
-        <div className="absolute top-safe md:top-8 mt-4 left-6 right-6 flex justify-between z-[60] max-w-5xl mx-auto">
-          <button onClick={() => setActiveCircle(null)} className="w-12 h-12 bg-white/60 backdrop-blur-xl rounded-2xl flex items-center justify-center text-indigo-900 shadow-lg hover:bg-white hover:scale-110 transition-all border border-white">
-            <ArrowLeft size={24} strokeWidth={3} />
-          </button>
-          <button className="w-12 h-12 bg-white/60 backdrop-blur-xl rounded-2xl flex items-center justify-center text-indigo-900 shadow-lg border border-white">
-            <Share2 size={20} strokeWidth={2.5} />
-          </button>
-        </div>
-
-        <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {!isJoined ? (
-            <div className="pb-32">
-              <div className="h-[50vh] md:h-[60vh] relative rounded-b-[4rem] overflow-hidden shadow-2xl">
-                <img src={activeCircle.cover} className="w-full h-full object-cover" alt="" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#EAE1FF] via-transparent to-transparent opacity-90"></div>
-              </div>
-              <div className="px-8 -mt-24 relative z-10 space-y-10 max-w-3xl mx-auto">
-                <div className="text-center space-y-4">
-                  <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-indigo-950 drop-shadow-sm">{activeCircle.name}</h1>
-                  <p className="text-lg text-indigo-800/80 font-bold px-4">{activeCircle.headline || activeCircle.desc}</p>
-                </div>
-                <div className="relative mt-12 rounded-[3rem] overflow-hidden border border-white shadow-2xl">
-                  <div className="p-8 space-y-6 opacity-30 bg-white/40 h-64 select-none pointer-events-none">
-                    <div className="h-10 w-2/3 bg-indigo-200/50 rounded-2xl animate-pulse"></div>
-                    <div className="h-32 w-full bg-indigo-200/50 rounded-2xl animate-pulse"></div>
-                  </div>
-                  <div className="absolute inset-0 bg-white/60 backdrop-blur-xl flex flex-col items-center justify-center p-8 text-center z-10 border border-white/50">
-                    <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mb-6 shadow-2xl rotate-3">
-                      <Lock size={36} className="text-[#a78bfa]" strokeWidth={3} />
-                    </div>
-                    <h3 className="text-2xl font-black mb-3 text-indigo-950">私密讨论区已锁定</h3>
-                    <p className="text-sm font-bold text-indigo-800/60 mb-8 max-w-xs leading-relaxed">通过简单的认知验证，即可解锁 99+ 条同好深度对话并加入我们。</p>
-                    <button onClick={() => setShowQuiz(true)} className="w-full max-w-xs bg-gradient-to-r from-[#b7a8ff] to-[#c084fc] text-white font-black py-5 rounded-3xl shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3">
-                      <Fingerprint size={20} strokeWidth={3} /> 开始验证申请
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="pt-28 md:pt-36 max-w-5xl mx-auto w-full px-6 pb-32">
-              <div className="mb-10 animate-in slide-in-from-bottom-8">
-                <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-indigo-950 mb-6">{activeCircle.name}</h1>
-                <div className="flex gap-4">
-                  <span className="bg-white/80 px-6 py-3 rounded-2xl text-sm font-black shadow-sm text-[#a78bfa] border border-white">社群动态</span>
-                  <span className="bg-white/40 px-6 py-3 rounded-2xl text-sm font-black text-indigo-800/60 hover:bg-white/80 cursor-pointer transition-all border border-white/50">精华资料</span>
-                </div>
-              </div>
-              <div className="space-y-8">
-                {activeCircle.privatePosts?.map((post, i) => (
-                  <GlassCard key={post.id} className="p-8 border-0 animate-in fade-in slide-in-from-bottom-6" style={{ animationDelay: `${i * 100}ms` }}>
-                    <div className="flex items-center gap-4 mb-6">
-                      <img src={post.avatar} className="w-12 h-12 rounded-2xl object-cover shadow-lg border-2 border-white" alt="" />
-                      <div>
-                        <h4 className="font-black text-base text-indigo-950">{post.author}</h4>
-                        <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">{post.time}</p>
-                      </div>
-                    </div>
-                    <p className="text-indigo-900/90 font-bold leading-relaxed text-lg mb-6">{post.content}</p>
-                    <div className="flex items-center gap-8 text-indigo-300 border-t border-indigo-50 pt-6">
-                      <button className="flex items-center gap-2 hover:text-[#a78bfa] transition-colors"><MessageSquare size={18} strokeWidth={2.5}/> <span className="text-xs font-black">23</span></button>
-                      <button className="flex items-center gap-2 hover:text-rose-400 transition-colors"><Heart size={18} strokeWidth={2.5}/> <span className="text-xs font-black">45</span></button>
-                    </div>
-                  </GlassCard>
-                ))}
-              </div>
-              <button onClick={() => setShowPostModal(true)} className="fixed bottom-10 right-6 md:right-12 w-16 h-16 bg-gradient-to-br from-[#a78bfa] to-[#c084fc] text-white rounded-3xl flex items-center justify-center shadow-[0_12px_40px_rgba(167,139,250,0.5)] hover:scale-110 active:scale-90 transition-all z-50">
-                <Plus size={32} strokeWidth={3.5} />
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  };
-
-  const renderQuiz = () => {
-    const q = activeCircle.quiz[quizStep];
-    return (
-      <div className="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-indigo-950/40 backdrop-blur-xl animate-in fade-in duration-300 md:pl-64">
-        <GlassCard className="w-full max-w-sm p-10 shadow-[0_32px_80px_rgba(0,0,0,0.15)] relative bg-white/95 border-0">
-          <button onClick={() => setShowQuiz(false)} className="absolute top-6 right-6 w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-400 hover:bg-indigo-100 transition-all">
-            <X size={20} strokeWidth={3} />
-          </button>
-          <div className="mb-10 text-center">
-            <span className="bg-indigo-50 text-[#a78bfa] text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-[#a78bfa]/10">
-              认知验证申请 {quizStep + 1} / {activeCircle.quiz.length}
-            </span>
-            <h3 className="font-black text-3xl tracking-tight mt-6 text-indigo-950">身份认同</h3>
-          </div>
-          <h4 className="font-bold text-xl leading-snug mb-10 text-indigo-900/80">{q.question}</h4>
-          <div className="space-y-4">
-            {q.options.map((opt, idx) => (
-              <button key={idx} onClick={() => {
-                if (idx === q.answer) {
-                  if (quizStep < activeCircle.quiz.length - 1) setQuizStep(prev => prev + 1);
-                  else handleJoinCircle(activeCircle.id);
-                } else showToast('认知不匹配，再想想哦~');
-              }} className="w-full text-left px-6 py-5 rounded-2xl bg-indigo-50/50 hover:bg-gradient-to-r hover:from-[#b7a8ff] hover:to-[#c084fc] hover:text-white font-black text-indigo-900 active:scale-95 transition-all shadow-sm">
-                {opt}
-              </button>
-            ))}
-          </div>
-        </GlassCard>
-      </div>
-    );
-  };
-
-  // ------------------------------------------
-  // 其他 Tab 简略渲染
-  // ------------------------------------------
   const renderMessages = () => (
-    <div className="pt-6 md:pt-10 px-6 pb-24 max-w-4xl mx-auto animate-in fade-in">
-      <h1 className="text-4xl font-black tracking-tighter mb-10 text-indigo-950 drop-shadow-sm">通知中心</h1>
+    <div className="pt-6 md:pt-10 px-6 pb-24 max-w-4xl mx-auto animate-in fade-in hide-scrollbar">
+      <h1 className="text-4xl font-black tracking-tighter mb-10 text-indigo-950">通知中心</h1>
       <GlassCard className="overflow-hidden p-0 border-0 shadow-xl">
         {NOTIFICATIONS.map((msg) => (
           <div key={msg.id} className="flex gap-5 p-6 active:bg-white/40 hover:bg-white/20 transition-all cursor-pointer border-b border-white/40 last:border-0 relative">
@@ -565,8 +516,8 @@ export default function App() {
   );
 
   const renderProfile = () => (
-    <div className="pt-6 md:pt-10 px-6 pb-24 max-w-4xl mx-auto animate-in fade-in space-y-10">
-      <h1 className="text-4xl font-black tracking-tighter text-indigo-950 drop-shadow-sm">我的</h1>
+    <div className="pt-6 md:pt-10 px-6 pb-24 max-w-4xl mx-auto animate-in fade-in space-y-10 hide-scrollbar">
+      <h1 className="text-4xl font-black tracking-tighter text-indigo-950">我的</h1>
       <GlassCard className="p-8 relative overflow-hidden shadow-2xl border-0">
         <div className="absolute top-0 right-0 w-48 h-48 bg-[#c084fc]/10 blur-[60px] rounded-full"></div>
         <div className="flex flex-col md:flex-row items-center gap-8 relative z-10 text-center md:text-left">
@@ -584,27 +535,117 @@ export default function App() {
           </div>
         </div>
       </GlassCard>
-      <div className="space-y-6">
-        <GlassCard className="p-0 overflow-hidden border-0 shadow-xl">
-          {[
-            { icon: Activity, label: '浏览历史与社群轨迹', color: 'text-[#c084fc]' },
-            { icon: Compass, label: '我的创作与发布', color: 'text-[#818cf8]' },
-          ].map((item, i) => (
-            <div key={i} className="flex items-center justify-between p-6 active:bg-white transition-all cursor-pointer border-b border-indigo-50 last:border-0 hover:pl-8 group">
-              <div className="flex items-center gap-4">
-                <item.icon size={20} className={`${item.color} group-hover:scale-110 transition-transform`} strokeWidth={3} />
-                <span className="font-black text-base text-indigo-900">{item.label}</span>
-              </div>
-              <ChevronRight size={18} className="text-indigo-200 group-hover:translate-x-2 transition-transform" />
+      <div className="space-y-4">
+         <GlassCard className="p-6 flex items-center justify-between group cursor-pointer hover:bg-white/80 transition-all">
+            <div className="flex items-center gap-4">
+               <Ticket className="text-[#a78bfa]" />
+               <span className="font-black text-indigo-950">我的活动报名单 <span className="text-[#a78bfa] ml-1">({registeredEvents.length})</span></span>
             </div>
-          ))}
-        </GlassCard>
-        <button onClick={() => { setIsAuth(false); setCurrentTab('home'); }} className="w-full bg-white/60 backdrop-blur-xl border border-white rounded-[2rem] py-6 flex items-center justify-center gap-3 text-rose-500 font-black hover:bg-rose-50 transition-all shadow-lg active:scale-95">
-          <LogOut size={20} strokeWidth={3.5} /> 退出登录
-        </button>
+            <ChevronRight className="text-indigo-200 group-hover:translate-x-1 transition-transform" />
+         </GlassCard>
+         <button onClick={() => { setIsAuth(false); setCurrentTab('home'); }} className="w-full bg-white/60 backdrop-blur-xl border border-white rounded-[2rem] py-6 flex items-center justify-center gap-3 text-rose-500 font-black hover:bg-rose-50 transition-all shadow-lg active:scale-95">
+           <LogOut size={20} strokeWidth={3.5} /> 退出登录
+         </button>
       </div>
     </div>
   );
+
+  const renderCircleDetail = () => {
+    const isJoined = joinedCircles.includes(activeCircle.id);
+    return (
+      <div className="fixed inset-0 bg-gradient-to-br from-[#F4F5F8] via-[#FFFFFF] to-[#F8F7FF] text-indigo-950 z-[100] animate-in slide-in-from-right-full duration-500 flex flex-col md:left-64">
+        <div className="absolute top-8 left-6 right-6 flex justify-between z-[60] max-w-5xl mx-auto">
+          <button onClick={() => setActiveCircle(null)} className="w-12 h-12 bg-white/60 backdrop-blur-xl rounded-2xl flex items-center justify-center shadow-md border border-white/80 hover:bg-white transition-all text-indigo-900">
+            <ArrowLeft size={24} strokeWidth={3} />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-6 pt-24 pb-32 max-w-4xl mx-auto w-full hide-scrollbar">
+           {!isJoined ? (
+             <div className="text-center space-y-8 animate-in fade-in mt-12">
+                <div className="w-24 h-24 bg-white rounded-3xl mx-auto flex items-center justify-center shadow-2xl rotate-3"><Lock size={40} className="text-[#a78bfa]" strokeWidth={3} /></div>
+                <h1 className="text-4xl font-black">{activeCircle.name}</h1>
+                <p className="text-indigo-800/60 font-bold max-w-xs mx-auto">完成认知验证以加入此圈层并解锁讨论区。</p>
+                <button onClick={() => handleOpenQuiz(activeCircle)} className="w-full max-w-xs bg-gradient-to-r from-[#b7a8ff] to-[#c084fc] text-white font-black py-5 rounded-3xl shadow-xl hover:scale-105 transition-transform">开始验证</button>
+             </div>
+           ) : (
+             <div className="pb-10">
+                <style>
+                  {`
+                    @keyframes iconPopExaggerated {
+                      0% { transform: scale(0) translateY(30px); opacity: 0; }
+                      50% { transform: scale(1.35) translateY(-10px); opacity: 1; }
+                      75% { transform: scale(0.9) translateY(5px); opacity: 1; }
+                      100% { transform: scale(1) translateY(0); opacity: 1; }
+                    }
+                    .animate-icon-pop { animation: iconPopExaggerated 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+                  `}
+                </style>
+                <div className="flex flex-col items-center justify-center text-center mt-6 md:mt-10 mb-16">
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-b from-[#ff9a44] to-[#ff5200] rounded-[1.8rem] shadow-xl flex items-center justify-center text-white mb-5 animate-icon-pop">
+                    <Train size={40} strokeWidth={2.5} />
+                  </div>
+                  <span className="text-[13px] font-black text-indigo-950/70 mb-8 tracking-wide animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
+                    {activeCircle.founder || '官方认证圈层'}
+                  </span>
+                  <h1 className="text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] font-black tracking-tight text-indigo-950 leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-700" style={{ animationDelay: '400ms' }}>
+                    {activeCircle.heroTitle || activeCircle.name}
+                  </h1>
+                  <p className="text-[15px] md:text-[17px] font-bold text-indigo-900/70 max-w-3xl mx-auto leading-relaxed px-2 md:px-6 whitespace-pre-line animate-in fade-in slide-in-from-bottom-8 duration-700" style={{ animationDelay: '600ms' }}>
+                    {activeCircle.lore || activeCircle.desc}
+                  </p>
+                </div>
+                <div className="w-12 h-1.5 bg-indigo-100 mx-auto rounded-full mb-12 animate-in fade-in" style={{ animationDelay: '800ms' }}></div>
+                <div className="space-y-6 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{ animationDelay: '1000ms' }}>
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-xl font-black text-indigo-950">最新运转记录</h3>
+                    <button className="text-sm font-black text-[#a78bfa] bg-indigo-50 px-4 py-2 rounded-full hover:bg-indigo-100">发布路书</button>
+                  </div>
+                  {activeCircle.privatePosts?.map((post) => (
+                    <GlassCard key={post.id} className="p-6 md:p-8 bg-white border border-indigo-50/50 shadow-sm hover:shadow-xl transition-all">
+                       <div className="flex items-center gap-4 mb-6">
+                         <img src={post.avatar} className="w-12 h-12 rounded-full object-cover border border-indigo-50" />
+                         <div>
+                           <h4 className="font-black text-base text-indigo-950">{post.author}</h4>
+                           <p className="text-[10px] font-black text-indigo-400 uppercase">{post.time}</p>
+                         </div>
+                       </div>
+                       <p className="text-indigo-900/90 font-bold leading-relaxed">{post.content}</p>
+                    </GlassCard>
+                  ))}
+                </div>
+             </div>
+           )}
+        </div>
+      </div>
+    );
+  };
+
+  const renderQuiz = () => {
+    if (!activeCircle || !activeCircle.quiz || !activeCircle.quiz[quizStep]) return null;
+    const q = activeCircle.quiz[quizStep];
+    return (
+      <div className="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-indigo-950/40 backdrop-blur-xl animate-in fade-in duration-300 md:pl-64">
+        <GlassCard className="w-full max-w-sm p-10 shadow-2xl relative bg-white/95 border-0">
+          <button onClick={() => setShowQuiz(false)} className="absolute top-6 right-6 w-10 h-10 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-400"><X size={20} strokeWidth={3} /></button>
+          <div className="mb-10 text-center">
+            <span className="bg-indigo-50 text-[#a78bfa] text-[10px] font-black px-4 py-1.5 rounded-full uppercase border border-[#a78bfa]/10">验证申请 {quizStep + 1} / {activeCircle.quiz.length}</span>
+            <h3 className="font-black text-3xl mt-6 text-indigo-950">身份认同</h3>
+          </div>
+          <h4 className="font-bold text-xl mb-10 text-indigo-900/80">{q.question}</h4>
+          <div className="space-y-4">
+            {q.options.map((opt, idx) => (
+              <button key={idx} onClick={() => {
+                if (idx === q.answer) {
+                  if (quizStep < activeCircle.quiz.length - 1) setQuizStep(prev => prev + 1);
+                  else handleJoinCircle(activeCircle.id);
+                } else showToast('认知不匹配，再想想哦~');
+              }} className="w-full text-left px-6 py-5 rounded-2xl bg-indigo-50/50 hover:bg-gradient-to-r hover:from-[#b7a8ff] hover:to-[#c084fc] hover:text-white font-black transition-all">{opt}</button>
+            ))}
+          </div>
+        </GlassCard>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8F7FF] via-[#EAE1FF] to-[#FFFFFF] font-sans flex text-indigo-950 selection:bg-[#c084fc]/20 overflow-hidden">
@@ -612,11 +653,11 @@ export default function App() {
       <main className="flex-1 md:ml-64 flex flex-col h-screen relative overflow-hidden">
         {renderHeader()}
         {toast && (
-          <div className="fixed top-6 md:top-8 left-1/2 md:ml-32 -translate-x-1/2 z-[120] bg-white/95 backdrop-blur-2xl border border-[#a78bfa]/20 text-indigo-950 px-8 py-4 rounded-3xl text-sm font-black flex items-center shadow-[0_20px_50px_rgba(167,139,250,0.3)] animate-in slide-in-from-top-4 border-b-4 border-b-[#a78bfa]">
+          <div className="fixed top-8 left-1/2 md:ml-32 -translate-x-1/2 z-[120] bg-white/95 backdrop-blur-2xl border border-[#a78bfa]/20 px-8 py-4 rounded-3xl text-sm font-black flex items-center shadow-xl animate-in slide-in-from-top-4 border-b-4 border-b-[#a78bfa]">
             <CheckCircle2 size={20} strokeWidth={3} className="text-[#a78bfa] mr-3" /> {toast}
           </div>
         )}
-        <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        <div className="flex-1 overflow-y-auto hide-scrollbar">
           {currentTab === 'home' && renderHome()}
           {currentTab === 'discover' && renderDiscover()}
           {currentTab === 'circles' && renderCircles()}
