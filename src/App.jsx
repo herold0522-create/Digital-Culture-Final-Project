@@ -174,7 +174,6 @@ const NOTIFICATIONS = [
   { id: 4, type: 'interaction', title: 'Locking_Jay', desc: '在「街舞交流圈」中提到了你', time: '昨天', unread: false },
 ];
 
-// 将单一的 HERO_ACTIVITY 改为多项 HERO_ACTIVITIES，用于顶部轮播
 const HERO_ACTIVITIES = [
   {
     id: 'hero1',
@@ -206,8 +205,13 @@ const ACTIVITIES = [
   { id: 'act1', title: '独立短片展映与导演对谈', date: '周六 14:00', cover: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=800', circle: '光影记录' },
   { id: 'act2', title: '极限飞盘高校联赛选拔', date: '周日 09:00', cover: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800', circle: '运动竞技' },
   { id: 'act3', title: '现代先锋艺术画廊巡展', date: '下周三 15:00', cover: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800', circle: '文艺创作' },
-  { id: 'act4', title: '汉服形制科普讲座', date: '下周五 19:00', cover: 'https://images.unsplash.com/photo-1541844053589-346841d0b34c?auto=format&fit=crop&q=80&w=800', circle: '国风动漫社' },
-  { id: 'act5', title: '福州老城区寻线之旅', date: '下周日 08:30', cover: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=800', circle: '交通迷运转群' }
+  { id: 'act4', title: '汉服形制科普讲座', date: '下周五 19:00', cover: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&q=80&w=800', circle: '国风动漫社' },
+  { id: 'act5', title: '福州老城区寻线之旅', date: '下周日 08:30', cover: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=800', circle: '交通迷运转群' },
+  { id: 'act6', title: '现代诗的解构与重塑', date: '下周二 20:00', cover: 'https://images.unsplash.com/photo-1505682634904-d7c8d95cdc50?auto=format&fit=crop&q=80&w=800', circle: '深夜读诗会' },
+  { id: 'act7', title: '独立游戏开发者沙龙', date: '下周四 14:00', cover: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800', circle: '硬核独立游戏舱' },
+  { id: 'act8', title: '精品手冲咖啡品鉴会', date: '下周六 15:30', cover: 'https://images.unsplash.com/photo-1495474472207-464a518e15a5?auto=format&fit=crop&q=80&w=800', circle: '精品咖啡研习所' },
+  { id: 'act9', title: '二次元同人签售会', date: '本月末 10:00', cover: 'https://images.unsplash.com/photo-1613376023733-0a73315d9b06?auto=format&fit=crop&q=80&w=800', circle: '国风动漫社' },
+  { id: 'act10', title: '街头涂鸦与街舞快闪', date: '下个月初 19:00', cover: 'https://images.unsplash.com/photo-1603190287605-e6ade32fa852?auto=format&fit=crop&q=80&w=800', circle: '街舞交流圈' }
 ];
 
 const USER_INFO = { name: '测试用户', avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=150', id: 'user_8829' };
@@ -219,6 +223,29 @@ const CATEGORIES = [
   { icon: Gamepad2, label: '电子竞技' },
   { icon: BookOpen, label: '学术探讨' },
   { icon: Camera, label: '光影记录' }
+];
+
+// ==========================================
+// 为多元矩阵预定义的散落图片位置参数 (增加层级感与数量)
+// 分为 前景层(清晰圈子图) 和 背景层(稍暗的活动图)
+// ==========================================
+const MATRIX_IMAGES = [
+  // --- 主层：圈子代表图片 (清晰，靠前 z-20) ---
+  { id: 'guofeng', type: 'circle', src: CIRCLES[0].cover, pos: "top-[10%] left-[2%] md:top-[12%] md:left-[8%] w-32 h-40 md:w-48 md:h-64", rot: "-rotate-6", delay: "200ms", z: "z-20" },
+  { id: 'dance', type: 'circle', src: CIRCLES[1].cover, pos: "top-[15%] right-[2%] md:top-[15%] md:right-[8%] w-40 h-32 md:w-60 md:h-48", rot: "rotate-6", delay: "350ms", z: "z-20" },
+  { id: 'film-photo', type: 'circle', src: CIRCLES[3].cover, pos: "bottom-[10%] left-[5%] md:bottom-[15%] md:left-[12%] w-40 h-40 md:w-56 md:h-56", rot: "rotate-12", delay: "500ms", z: "z-20" },
+  { id: 'indie-game', type: 'circle', src: CIRCLES[5].cover, pos: "bottom-[8%] right-[2%] md:bottom-[12%] md:right-[10%] w-32 h-48 md:w-48 md:h-64", rot: "-rotate-12", delay: "650ms", z: "z-20" },
+  { id: 'coffee', type: 'circle', src: CIRCLES[6].cover, pos: "top-[40%] left-[-2%] md:left-[2%] w-32 h-32 md:w-40 md:h-40 hidden md:block", rot: "-rotate-12", delay: "800ms", z: "z-20" },
+  { id: 'transit', type: 'circle', src: CIRCLES[2].cover, pos: "top-[50%] right-[-2%] md:right-[2%] w-40 h-28 md:w-48 md:h-32 hidden md:block", rot: "rotate-12", delay: "950ms", z: "z-20" },
+  
+  // --- 背景层：活动图片 (较小，增加透明度暗度，靠后 z-10，制造纵深感) ---
+  { id: 'act1', type: 'activity', src: ACTIVITIES[0].cover, pos: "top-[5%] left-[30%] md:top-[6%] md:left-[35%] w-20 h-20 md:w-32 md:h-32", rot: "rotate-12", delay: "250ms", z: "z-10 opacity-50 brightness-50" },
+  { id: 'act2', type: 'activity', src: ACTIVITIES[1].cover, pos: "bottom-[5%] right-[30%] md:bottom-[8%] md:right-[35%] w-24 h-24 md:w-36 md:h-36", rot: "-rotate-6", delay: "400ms", z: "z-10 opacity-50 brightness-50" },
+  { id: 'act3', type: 'activity', src: ACTIVITIES[2].cover, pos: "top-[25%] left-[25%] md:top-[30%] md:left-[25%] w-16 h-16 md:w-28 md:h-28 hidden md:block", rot: "-rotate-12", delay: "550ms", z: "z-10 opacity-50 brightness-50" },
+  { id: 'act4', type: 'activity', src: ACTIVITIES[3].cover, pos: "top-[30%] right-[25%] md:top-[35%] md:right-[25%] w-20 h-28 md:w-32 md:h-40 hidden md:block", rot: "rotate-6", delay: "700ms", z: "z-10 opacity-50 brightness-50" },
+  { id: 'act6', type: 'activity', src: ACTIVITIES[5].cover, pos: "bottom-[30%] left-[25%] md:bottom-[35%] md:left-[22%] w-24 h-16 md:w-36 md:h-24 hidden md:block", rot: "-rotate-6", delay: "850ms", z: "z-10 opacity-50 brightness-50" },
+  { id: 'act8', type: 'activity', src: ACTIVITIES[7].cover, pos: "bottom-[25%] right-[20%] md:bottom-[28%] md:right-[22%] w-20 h-20 md:w-28 md:h-28 hidden md:block", rot: "rotate-12", delay: "900ms", z: "z-10 opacity-50 brightness-50" },
+  { id: 'hero1', type: 'activity', src: HERO_ACTIVITIES[0].cover, pos: "top-[2%] right-[40%] md:top-[5%] md:right-[45%] w-28 h-20 md:w-40 md:h-28", rot: "-rotate-3", delay: "950ms", z: "z-10 opacity-50 brightness-50" },
 ];
 
 // ==========================================
@@ -254,19 +281,35 @@ export default function App() {
   const [quizStep, setQuizStep] = useState(0);
   const [toast, setToast] = useState('');
   
-  // 新增：自动轮播状态
+  // 轮播与观察器状态
   const [currentHeroIdx, setCurrentHeroIdx] = useState(0);
+  const [matrixRefEl, setMatrixRefEl] = useState(null);
+  const [matrixInView, setMatrixInView] = useState(false);
 
-  // 新增：轮播定时器逻辑
+  // 轮播定时器逻辑
   useEffect(() => {
     let timer;
     if (isAuth && currentTab === 'discover') {
       timer = setInterval(() => {
         setCurrentHeroIdx((prev) => (prev + 1) % HERO_ACTIVITIES.length);
-      }, 5000); // 每 5 秒切换一次
+      }, 5000);
     }
     return () => clearInterval(timer);
   }, [isAuth, currentTab]);
+
+  // 首页矩阵板块滚动监听逻辑
+  useEffect(() => {
+    if (!matrixRefEl) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setMatrixInView(true);
+        observer.disconnect(); // 触发一次后注销监听
+      }
+    }, { threshold: 0.2 }); // 露出 20% 即可触发动画
+    
+    observer.observe(matrixRefEl);
+    return () => observer.disconnect();
+  }, [matrixRefEl]);
 
   const showToast = (msg) => {
     setToast(msg);
@@ -411,6 +454,8 @@ export default function App() {
 
   const renderHome = () => (
     <div className="max-w-6xl mx-auto px-4 md:px-10 pt-6 pb-24 md:pb-12 space-y-12 animate-in fade-in hide-scrollbar">
+      
+      {/* Search & Notif */}
       <div className="hidden md:flex justify-between items-center pt-2">
         <div className="relative w-96">
           <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-indigo-800/40" size={20} />
@@ -422,6 +467,7 @@ export default function App() {
         </button>
       </div>
 
+      {/* Intro Banner */}
       <section className="space-y-6">
         <div className="animate-in fade-in slide-in-from-left-8 duration-700">
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-indigo-950 mb-3 drop-shadow-sm">进入同频。</h2>
@@ -447,6 +493,7 @@ export default function App() {
         </GlassCard>
       </section>
 
+      {/* Stats */}
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
         {[
           { label: '兴趣圈子', value: '128+', icon: Compass },
@@ -469,22 +516,73 @@ export default function App() {
         ))}
       </section>
 
-      <section className="space-y-8 pb-12">
-        <h2 className="text-3xl font-black tracking-tight text-indigo-950">探索多元矩阵。</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {[
-            { title: '文艺创作', desc: '灵感的碰撞', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800' },
-            { title: '运动竞技', desc: '汗水的挥洒', img: 'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=800' },
-            { title: '兴趣同好', desc: '纯粹的热爱', img: 'https://images.unsplash.com/photo-1608889175123-8ee362201f81?auto=format&fit=crop&q=80&w=800' }
-          ].map((item, idx) => (
-            <GlassCard key={idx} className="p-6 text-center group hover:bg-white/80 transition-all shadow-xl">
-              <div className="h-56 rounded-3xl overflow-hidden mb-6 relative shadow-inner bg-indigo-50">
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+      {/* 滚动触发的沉浸式错落图片矩阵 - 增加了大量活动图片作为背景层 */}
+      <section className="pb-12" ref={setMatrixRefEl}>
+        <style>
+          {`
+            .matrix-item {
+              opacity: 0;
+              transform: translateY(80px) scale(0.85);
+              transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .matrix-item.in-view {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+            }
+          `}
+        </style>
+        
+        <div className="relative w-full h-[500px] md:h-[650px] bg-indigo-950 rounded-[3rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.3)] flex items-center justify-center">
+          
+          {/* 背景环境光 */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/40 via-indigo-950 to-[#0c0a20] pointer-events-none"></div>
+
+          {/* 错落有致的卡片阵列 */}
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+            {MATRIX_IMAGES.map((img) => (
+              <div 
+                key={img.id} 
+                className={`absolute ${img.pos} ${img.z} matrix-item ${matrixInView ? 'in-view' : ''} pointer-events-auto`}
+                style={{ transitionDelay: matrixInView ? img.delay : '0ms' }}
+              >
+                <div 
+                  className={`w-full h-full transform ${img.rot} hover:rotate-0 hover:scale-105 hover:z-50 transition-all duration-500 cursor-pointer shadow-2xl relative group rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden`}
+                  onClick={() => { 
+                    if(img.type === 'circle') {
+                      const circle = CIRCLES.find(c => c.id === img.id);
+                      if(circle) { setActiveCircle(circle); handleOpenQuiz(circle); }
+                    }
+                  }}
+                >
+                  {/* 对于背景活动图片增加暗角/灰度效果，增强纵深感 */}
+                  <img src={img.src} className={`w-full h-full object-cover border-[3px] border-white/10 group-hover:border-white/30 transition-all duration-500`} alt="" />
+                  
+                  {/* Hover 蒙版 (只有圈子图片支持点击进入) */}
+                  {img.type === 'circle' && (
+                    <div className="absolute inset-0 bg-indigo-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                      <span className="text-white font-black text-sm md:text-lg tracking-widest text-center px-4 drop-shadow-md">
+                        {CIRCLES.find(c => c.id === img.id)?.name}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-              <h3 className="text-2xl font-black text-indigo-950 mb-1">{item.title}</h3>
-              <p className="text-sm text-indigo-800/60 font-bold">{item.desc}</p>
-            </GlassCard>
-          ))}
+            ))}
+          </div>
+
+          {/* 中央巨型标题（最后浮现），使用了更强的投影以保证在图片上方绝对清晰 */}
+          <div 
+            className={`relative z-30 text-center pointer-events-none matrix-item ${matrixInView ? 'in-view' : ''}`} 
+            style={{ transitionDelay: '300ms' }}
+          >
+            <h3 className="text-[3.5rem] md:text-7xl lg:text-[6.5rem] font-black text-white tracking-tighter drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)] mb-4 leading-[1.1]">
+              多元矩阵，<br/>由此展开。
+            </h3>
+            <p className="text-indigo-100 font-black text-xs md:text-sm tracking-[0.4em] uppercase drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">
+              Explore Your Spiritual Matrix
+            </p>
+          </div>
+
         </div>
       </section>
     </div>
@@ -492,6 +590,23 @@ export default function App() {
 
   const renderDiscover = () => (
     <div className="pt-6 md:pt-10 px-4 md:px-6 max-w-6xl mx-auto animate-in fade-in pb-24 hide-scrollbar">
+      
+      {/* 补充无限滚动动画 CSS */}
+      <style>
+        {`
+          @keyframes scrollX {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-scroll-x {
+            animation: scrollX 40s linear infinite;
+          }
+          .animate-scroll-x:hover {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+
       <div className="flex justify-between items-center mb-8">
          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-indigo-950">发现</h1>
          <div className="w-10 h-10 rounded-full bg-white/80 p-0.5 shadow-sm border border-white">
@@ -543,13 +658,16 @@ export default function App() {
          </div>
       </div>
 
-      <div className="mb-14 animate-in fade-in slide-in-from-bottom-8">
-        {/* 新增 scroll-smooth 使手动滑动更流畅 */}
-        <div className="flex gap-4 md:gap-5 overflow-x-auto hide-scrollbar pb-6 -mx-4 px-4 md:-mx-0 md:px-0 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-           {ACTIVITIES.map((activity, idx) => {
+      <div className="relative w-full overflow-hidden mb-14 animate-in fade-in slide-in-from-bottom-8">
+        <h2 className="text-2xl font-black text-indigo-950 mb-5 flex items-center gap-2 px-1">
+           <Ticket className="text-[#a78bfa]" /> 近期活动
+        </h2>
+        {/* CSS 驱动的无限轮播活动流 */}
+        <div className="flex w-max gap-4 md:gap-5 animate-scroll-x hover:[animation-play-state:paused]">
+           {[...ACTIVITIES, ...ACTIVITIES].map((activity, idx) => {
              const isRegistered = registeredEvents.includes(activity.id);
              return (
-               <div key={activity.id} className="min-w-[260px] md:min-w-[320px] w-[260px] md:w-[320px] shrink-0 flex flex-col group cursor-pointer snap-start" style={{ animationDelay: `${idx * 100}ms` }}>
+               <div key={`${activity.id}-${idx}`} className="min-w-[260px] md:min-w-[320px] w-[260px] md:w-[320px] shrink-0 flex flex-col group cursor-pointer">
                  <div className="w-full aspect-video rounded-2xl overflow-hidden mb-3 shadow-md border border-black/5 relative bg-indigo-50">
                    <img src={activity.cover} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={activity.title} />
                  </div>
@@ -774,19 +892,16 @@ export default function App() {
                     <ActiveIcon size={40} strokeWidth={2.5} />
                   </div>
                   
-                  {/* Apple Books Style: 顶部学院来源 */}
                   <span className="text-[13px] font-black text-indigo-950/70 mb-6 tracking-wide animate-smooth-up" style={{ animationDelay: '150ms' }}>
                     {activeCircle.founder || '官方认证圈层'}
                   </span>
                   
-                  {/* Apple Books Style: 强制断行的自适应巨型标题 */}
                   <h1 className="text-[2.5rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-black tracking-tight text-indigo-950 leading-[1.1] mb-8 drop-shadow-sm animate-smooth-up" style={{ animationDelay: '300ms' }}>
                     {(activeCircle.heroTitle || activeCircle.name).split('\n').map((line, index) => (
                       <span key={index} className="block">{line}</span>
                     ))}
                   </h1>
                   
-                  {/* Apple Books Style: 居中简介 */}
                   <p className="text-[15px] md:text-[17px] font-bold text-indigo-900/70 max-w-2xl mx-auto leading-relaxed px-2 md:px-6 whitespace-pre-line animate-smooth-up" style={{ animationDelay: '450ms' }}>
                     {activeCircle.lore || activeCircle.desc}
                   </p>
